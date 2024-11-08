@@ -1,6 +1,6 @@
 # application/usecases/query_usecase.py
 from typing import Dict, List
-from domain.interfaces.repositories.database_repository import DatabaseRepository
+from application.domain.interfaces.repositories.database_repository import DatabaseRepository
 import re
 
 class QueryUseCase:
