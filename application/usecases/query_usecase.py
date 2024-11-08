@@ -11,8 +11,14 @@ class QueryUseCase:
         return self.db_repo.get_tables()
 
     def execute_query(self, query: str) -> Dict:
+        
+        # Check if the query starts with SELECT or WITH
+        if not query.strip().upper().startswith(("SELECT", "WITH")):
+            return {"data": [], "table_columns_details": []}    
+
         result = self.db_repo.execute_query(query)
         table_names = self.extract_table_names(query)
+
         table_columns_details = {table_name: self.db_repo.get_table_details(table_name) for table_name in table_names}
         return {"data": result, "table_columns_details": table_columns_details}
 
