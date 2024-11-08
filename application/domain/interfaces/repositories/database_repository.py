@@ -30,12 +30,37 @@ class DatabaseRepository(IDatabaseRepository):
         return tables_info
 
     def execute_query(self, query: str) -> List[Dict]:
-        connection = self._connect()
-        cursor = connection.cursor()
+        connection = None
+        cursor = None
+        result = []
 
-        cursor.execute(query)
-        result = cursor.fetchall()
-        connection.close()
+        try:
+            # Connect to the database and create a cursor
+            connection = self._connect()
+            cursor = connection.cursor()
+
+            # Execute the query
+            cursor.execute(query)
+            
+            # Check if the query returns data
+            if cursor.description:
+                result = cursor.fetchall()
+            else:
+                # Commit if the command is a non-SELECT operation
+                connection.commit()
+                result = [{"error": "Operation executed successfully."}]
+
+        except Exception as e:
+            # Log the error message for debugging
+            print(f"Error executing query: {e}")
+            result = [{"error": str(e)}]
+        
+        finally:
+            # Ensure the cursor and connection are properly closed
+            if cursor is not None:
+                cursor.close()
+            if connection is not None:
+                connection.close()
 
         return result
 
