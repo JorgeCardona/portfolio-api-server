@@ -3,10 +3,10 @@
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from application.services.query_service import create_query_usecase  # Ruta relativa
-from application.domain.entities.models.query import Query  # Ruta relativa
-from application.configuration.db_path import DB_PATH  # Ruta relativa
-from application.configuration.cors import CORS_CONFIG  # Ruta relativa
+from services.query_service import create_query_usecase  # Ruta relativa
+from domain.entities.models.query import Query  # Ruta relativa
+from configuration.db_path import DB_PATH  # Ruta relativa
+from configuration.cors import CORS_CONFIG  # Ruta relativa
 from typing import Dict, List
 
 app = FastAPI()

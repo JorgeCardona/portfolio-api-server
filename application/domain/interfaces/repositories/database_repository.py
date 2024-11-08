@@ -1,6 +1,6 @@
 # application/repositories/database_repository.py
 import sqlite3
-from application.domain.interfaces.repositories.repositories import IDatabaseRepository
+from domain.interfaces.repositories.repositories import IDatabaseRepository
 from typing import List, Dict
 
 class DatabaseRepository(IDatabaseRepository):
