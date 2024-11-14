@@ -103,28 +103,28 @@ class PasswordUseCase:
         if password_length <= 13:
             # Take every 17th character
             combined_string = combined_string[::17]
-        elif 14 <= password_length <= 16:
+        elif 14 <= password_length <= 17:
             # Take every 15th character
             combined_string = combined_string[::15]
-        elif 17 <= password_length <= 19:
+        elif 18 <= password_length <= 20:
             # Take every 13th character
             combined_string = combined_string[::13]
-        elif 20 <= password_length <= 22:
+        elif 21 <= password_length <= 23:
             # Take every 11th character
             combined_string = combined_string[::11]
-        elif 23 <= password_length <= 28:
+        elif 24 <= password_length <= 28:
             # Take every 9th character
             combined_string = combined_string[::9]
         elif 29 <= password_length <= 36:
             # Take every 7rd character
             combined_string = combined_string[::7]
-        elif 37 <= password_length <= 50:
+        elif 37 <= password_length <= 51:
             # Take every 5rd character
             combined_string = combined_string[::5]
-        elif 51 <= password_length <= 84:
+        elif 52 <= password_length <= 86:
             # Take every 3rd character
             combined_string = combined_string[::3]            
-        else:  # password_length > 84
+        else:  # password_length > 86
             # No changes to combined_string
             pass
 
