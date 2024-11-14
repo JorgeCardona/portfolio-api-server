@@ -51,7 +51,7 @@ class PasswordUseCase:
         Returns:
         - str: The generated password, truncated to the desired length.
         """
-        
+
         # Ensure password length is within [10, 100] bounds
         password_length = max(10, min(password_length, 100))
 
@@ -97,21 +97,15 @@ class PasswordUseCase:
 
         # Modify combined_string based on the password_length before adding it to result
         if password_length < 14:
-            # Take every 12th character
-            combined_string = combined_string[::12]
-        elif 15 <= password_length <= 21:
-            # Take every 8th character
-            combined_string = combined_string[::8]
-        elif 22 <= password_length <= 28:
-            # Take every 6th character
-            combined_string = combined_string[::6]
-        elif 29 <= password_length <= 34:
+            # Take every 11th character
+            combined_string = combined_string[::11]
+        elif 15 <= password_length <= 25:
+            # Take every 7th character
+            combined_string = combined_string[::7]
+        elif 26 <= password_length <= 35:
             # Take every 5th character
             combined_string = combined_string[::5]
-        elif 35 <= password_length <= 44:
-            # Take every 4th character
-            combined_string = combined_string[::4]
-        elif 45 <= password_length <= 57:
+        elif 36 <= password_length <= 57:
             # Take every 3rd character
             combined_string = combined_string[::3]
         else:  # password_length > 57
