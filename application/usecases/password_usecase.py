@@ -25,9 +25,13 @@ class PasswordUseCase:
         base_string_upper = base_string.upper()
         key_string_lower = key_string.lower()
 
+        # Apply padding by appending extra data (you can customize the padding as needed)
+        extra_padding_hashed_base = b"<3xtra-Padd1ng+{hashed}(base)>"  # This is added to extend the hash length
+        extra_padding_hashed_key  = b"[|extr@_paddinG=h4shed!k3y?#]~"  # This is added to extend the hash length
+        
         # Hash the strings using SHA3-512
-        hashed_base = hashlib.sha3_512(base_string_upper.encode('utf-8')).digest()
-        hashed_key = hashlib.sha3_512(key_string_lower.encode('utf-8')).digest()
+        hashed_base = extra_padding_hashed_base + hashlib.sha3_512(base_string_upper.encode('utf-8')).digest()
+        hashed_key = extra_padding_hashed_key + hashlib.sha3_512(key_string_lower.encode('utf-8')).digest()
 
         # Convert hashes to Base64 and apply transformations
         base64_base = base64.b64encode(hashed_base).decode('utf-8')[::-1]  # Reversed Base64
@@ -96,19 +100,31 @@ class PasswordUseCase:
         )
 
         # Modify combined_string based on the password_length before adding it to result
-        if password_length < 14:
+        if password_length <= 13:
+            # Take every 17th character
+            combined_string = combined_string[::17]
+        elif 14 <= password_length <= 16:
+            # Take every 15th character
+            combined_string = combined_string[::15]
+        elif 17 <= password_length <= 19:
+            # Take every 13th character
+            combined_string = combined_string[::13]
+        elif 20 <= password_length <= 22:
             # Take every 11th character
             combined_string = combined_string[::11]
-        elif 15 <= password_length <= 25:
-            # Take every 7th character
+        elif 23 <= password_length <= 28:
+            # Take every 9th character
+            combined_string = combined_string[::9]
+        elif 29 <= password_length <= 36:
+            # Take every 7rd character
             combined_string = combined_string[::7]
-        elif 26 <= password_length <= 35:
-            # Take every 5th character
+        elif 37 <= password_length <= 50:
+            # Take every 5rd character
             combined_string = combined_string[::5]
-        elif 36 <= password_length <= 57:
+        elif 51 <= password_length <= 84:
             # Take every 3rd character
-            combined_string = combined_string[::3]
-        else:  # password_length > 57
+            combined_string = combined_string[::3]            
+        else:  # password_length > 84
             # No changes to combined_string
             pass
 
