@@ -26,9 +26,9 @@ class PasswordUseCase:
         key_string_lower = key_string.lower()
 
         # Apply padding by appending extra data (you can customize the padding as needed)
-        extra_padding_hashed_base = b"<3xtra-Padd1ng+{hashed}(base)>"  # This is added to extend the hash length
-        extra_padding_hashed_key  = b"[|extr@_paddinG=h4shed!k3y?#]~"  # This is added to extend the hash length
-        
+        extra_padding_hashed_base = b"<J1Xtr2-!P4dd1ng+{h5sh3d}(b46s7)>"  # This is added to extend the hash length
+        extra_padding_hashed_key  = b"[N|8Xtr9@_P0dd1ng=hOsh3D!k3Y?#]~&"  # This is added to extend the hash length
+                                      
         # Hash the strings using SHA3-512
         hashed_base = extra_padding_hashed_base + hashlib.sha3_512(base_string_upper.encode('utf-8')).digest()
         hashed_key = extra_padding_hashed_key + hashlib.sha3_512(key_string_lower.encode('utf-8')).digest()
