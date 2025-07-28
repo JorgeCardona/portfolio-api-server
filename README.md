@@ -66,6 +66,22 @@ Returns available SQL tables and their columns.
 
 ---
 
+| Table Name      | Columns                                                                                                   |
+|----------------|------------------------------------------------------------------------------------------------------------|
+| albums          | AlbumId, Title, ArtistId                                                                                  |
+| sqlite_sequence | name, seq                                                                                                  |
+| artists         | ArtistId, Name                                                                                            |
+| customers       | CustomerId, FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email, SupportRepId |
+| employees       | EmployeeId, LastName, FirstName, Title, ReportsTo, BirthDate, HireDate, Address, City, State, Country, PostalCode, Phone, Fax, Email |
+| genres          | GenreId, Name                                                                                             |
+| invoices        | InvoiceId, CustomerId, InvoiceDate, BillingAddress, BillingCity, BillingState, BillingCountry, BillingPostalCode, Total |
+| invoice_items   | InvoiceLineId, InvoiceId, TrackId, UnitPrice, Quantity                                                    |
+| media_types     | MediaTypeId, Name                                                                                         |
+| playlists       | PlaylistId, Name                                                                                          |
+| playlist_track  | PlaylistId, TrackId                                                                                       |
+| tracks          | TrackId, Name, AlbumId, MediaTypeId, GenreId, Composer, Milliseconds, Bytes, UnitPrice                    |
+| sqlite_stat1    | tbl, idx, stat                                                                                            |
+
 ### 🧮 `POST /query`
 
 Executes raw SQL queries.
@@ -74,7 +90,7 @@ Executes raw SQL queries.
 
 ```json
 {
-  "query": "SELECT * FROM users LIMIT 10"
+  "query": "SELECT * FROM artists LIMIT 10"
 }
 ```
 
