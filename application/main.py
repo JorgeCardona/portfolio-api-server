@@ -1,6 +1,8 @@
 # application/main.py
 # uvicorn application.main:app --reload
 # uvicorn application.main:app --host 0.0.0.0 --port 8000 --reload
+# solo web con python -> https://portfolio-api-server.onrender.com
+# app con docker -> https://portfolio-api-server-7uvi.onrender.com/
 
 from typing import Dict, List
 from fastapi import FastAPI, HTTPException

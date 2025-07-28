@@ -13,7 +13,13 @@ This repository contains the **Portfolio API**, a backend service built with **F
 
 This API is hosted on **Render.com** and available at:
 
-- 🌐 **Production URL**: [https://portfolio-api-server.onrender.com](https://portfolio-api-server.onrender.com)
+# Python Deployment
+![python](https://raw.githubusercontent.com/JorgeCardona/portfolio-api-server/refs/heads/main/images/despliegue_python.jpg)
+
+# Docker Deployment
+![docker](https://raw.githubusercontent.com/JorgeCardona/portfolio-api-server/refs/heads/main/images/despliegue_docker.jpg)
+
+- 🌐 **Production URL**: [https://portfolio-api-server-7uvi.onrender.com/](https://portfolio-api-server-7uvi.onrender.com/)
 - 🔧 **Deployment Management**: [https://dashboard.render.com](https://dashboard.render.com) (SSO login)
 
 It is connected to the GitHub repository:
