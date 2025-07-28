@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 @dataclass
 class MultiMediaDownloadConfig:
@@ -10,3 +10,4 @@ class MultiMediaDownloadConfig:
     trim_start: Optional[str] = None  # "HH:MM:SS"
     trim_end: Optional[str] = None    # "HH:MM:SS"
     include_thumbnail: bool = True
+    http_headers: Optional[Dict[str, str]] = None
