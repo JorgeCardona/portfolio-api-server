@@ -44,7 +44,7 @@ async def get_multimedia_file(
     export_dir: str = EXPORT_DIR
 ):
     try:
-        # 1. Create file via service
+        # 1. Construir datos de entrada
         request_data = DownloadMultiMediaRequest(
             url=url,
             format=format,
@@ -53,13 +53,22 @@ async def get_multimedia_file(
             include_thumbnail=include_thumbnail,
             subtitle_langs=subtitle_langs
         )
+
+        # 2. Ejecutar servicio
         service = DownloadMultiMediaService()
         result = service.handle(request_data)
+
+        # 3. Validar resultado
+        if not result or not isinstance(result, dict) or "filename" not in result:
+            raise HTTPException(
+                status_code=500,
+                detail="Internal error: Download service did not return expected result."
+            )
 
         filename = result["filename"]
         zip_path = os.path.join(export_dir, filename)
 
-        # 2. Schedule auto-delete in 30 min
+        # 4. Programar auto-eliminación
         def delete_file_later(path):
             if os.path.exists(path):
                 os.remove(path)
@@ -67,13 +76,21 @@ async def get_multimedia_file(
 
         threading.Timer(1800, delete_file_later, args=[zip_path]).start()
 
-        # 3. Serve file directly
+        # 5. Verificar existencia del archivo
         if not os.path.exists(zip_path):
-            raise HTTPException(status_code=404, detail="File not found")
-        return FileResponse(zip_path, media_type="application/zip", filename=filename)
+            raise HTTPException(status_code=404, detail="File not found on server.")
+
+        # 6. Enviar archivo
+        return FileResponse(
+            zip_path,
+            media_type="application/zip",
+            filename=filename
+        )
 
     except Exception as e:
+        print(f"❌ ERROR in /get-multimedia-file: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/create-multimedia-file", response_model=DownloadMultiMediaResponse)
 async def download_video(request: DownloadMultiMediaRequest):
