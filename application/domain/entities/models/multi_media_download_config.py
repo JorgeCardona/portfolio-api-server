@@ -11,3 +11,4 @@ class MultiMediaDownloadConfig:
     trim_end: Optional[str] = None    # "HH:MM:SS"
     include_thumbnail: bool = True
     http_headers: Optional[Dict[str, str]] = None
+    
