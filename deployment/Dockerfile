@@ -3,9 +3,9 @@ FROM python:3.11.10-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Instala ffmpeg y limpia caché de apt
+# ⬇️ Añade libpq-dev para compilar psycopg2
 RUN apt-get update && \
-    apt-get install -y ffmpeg && \
+    apt-get install -y ffmpeg libpq-dev gcc && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
