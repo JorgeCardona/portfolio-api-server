@@ -4,3 +4,4 @@ pydantic==2.9.2
 psycopg2==2.9.10
 SQLAlchemy==2.0.36
 strawberry-graphql[fastapi]==0.248.0
+yt_dlp==2025.7.21
