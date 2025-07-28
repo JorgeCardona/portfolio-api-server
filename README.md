@@ -13,6 +13,9 @@ This repository contains the **Portfolio API**, a backend service built with **F
 
 This API is hosted on **Render.com** and available at:
 
+# Deployment
+![deployments](https://raw.githubusercontent.com/JorgeCardona/portfolio-api-server/refs/heads/main/images/deployments.png)
+
 # Python Deployment
 ![python](https://raw.githubusercontent.com/JorgeCardona/portfolio-api-server/refs/heads/main/images/despliegue_python.jpg)
 
