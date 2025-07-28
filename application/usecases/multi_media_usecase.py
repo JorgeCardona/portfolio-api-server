@@ -1,8 +1,8 @@
 
-from entities.models.multi_media_download_config import MultiMediaDownloadConfig
-from services.yt_dlp_service import YtDlpService
-from services.ffmpeg_service import FFmpegService
-from services.zip_service import ZipService
+from application.domain.entities.models.multi_media_download_config import MultiMediaDownloadConfig
+from application.services.yt_dlp_service import YtDlpService
+from application.services.ffmpeg_service import FFmpegService
+from application.services.zip_service import ZipService
 
 class DownloadMultiMediaUseCase:
     def __init__(self, config: MultiMediaDownloadConfig):

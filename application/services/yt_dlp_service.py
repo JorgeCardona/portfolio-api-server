@@ -1,8 +1,8 @@
 import os
 import re
 import yt_dlp
-from entities.models.multi_media_download_config import MultiMediaDownloadConfig
-from entities.models.multi_media import MultiMedia
+from application.domain.entities.models.multi_media_download_config import MultiMediaDownloadConfig
+from application.domain.entities.models.multi_media import MultiMedia
 
 class YtDlpService:
     def __init__(self, config: MultiMediaDownloadConfig):

@@ -1,10 +1,10 @@
-from application.domain.entities.models.download import DownloadRequest
-from models.download_config import DownloadConfig
-from usecases.multi_media_usecase import DownloadMultiMediaUseCase
+from application.domain.entities.models.download_multi_media import DownloadMultiMediaRequest
+from application.domain.entities.models.multi_media_download_config import MultiMediaDownloadConfig
+from application.usecases.multi_media_usecase import DownloadMultiMediaUseCase
 
 class DownloadMultiMediaService:
-    def handle(self, request: DownloadRequest):
-        config = DownloadConfig(
+    def handle(self, request: DownloadMultiMediaRequest):
+        config = MultiMediaDownloadConfig(
             url=request.url,
             format=request.format,
             output_dir="./downloads",

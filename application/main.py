@@ -1,11 +1,12 @@
 # application/main.py
 # uvicorn application.main:app --reload
+# uvicorn application.main:app --host 0.0.0.0 --port 8000 --reload
 
 from typing import Dict, List
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from application.services.query_service import create_query_usecase
-from application.domain.entities.models.query import Query
+from application.domain.entities.models.query import Query as Query_Model
 from application.configuration.db_path import DB_PATH
 from application.configuration.cors import CORS_CONFIG
 from application.services.password_service import PasswordService
@@ -27,6 +28,8 @@ app.add_middleware(
     CORSMiddleware,
     **CORS_CONFIG
 )
+
+EXPORT_DIR = './exports'
 
 @app.get("/get-multimedia-file")
 async def get_multimedia_file(
@@ -104,7 +107,7 @@ def get_tables():
 
 
 @app.post("/query")
-async def execute_query(query: Query):
+async def execute_query(query: Query_Model):
     try:
         result = query_usecase.execute_query(query.query)
         return result
