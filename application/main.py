@@ -31,6 +31,7 @@ app.add_middleware(
     **CORS_CONFIG
 )
 
+"""
 EXPORT_DIR = './exports'
 
 @app.get("/get-multimedia-file")
@@ -116,6 +117,7 @@ def delete_file(filename: str, export_dir: str = EXPORT_DIR):
     
     os.remove(filepath)
     return {"detail": f"{filename} deleted successfully."}
+"""
 
 @app.get("/tables", response_model=Dict[str, List[Dict[str, str]]])
 def get_tables():
